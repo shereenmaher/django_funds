@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>counter</title>
+</head>
+<body>
+    <h1>Counter</h1>
+
+    <p>You have visited this site {{ request.session.count }} times.</p>
+    <br>
+    <label for="adding_two">click to add two to counter</label>
+    <a href="/add_two">
+        <button>add two</button>
+    </a>
+    <br>
+    <label for="destroy_session">clear counter</label>
+    <a href="/destroy_session">
+        <button>Reset</button>
+    </a>
+
+    <form action="/increment" method="POST">
+    {% csrf_token %}
+    <label for="inc_val">please enter the increment value you  like to add to counter</label>
+    <input type="number" name="inc_val">
+
+    <button type="submit">Add</button>
+</form>
+</body>
+</html>

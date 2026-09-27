@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register & Log in</title>
+</head>
+<body>
+    <h1>Power House Gym</h1>
+    <!-- registeration form for user-->
+    <form action="/"  method="POST">
+        {% csrf_token %}
+        <h2>Register</h2>
+        <div>
+            <label for="username">username</label>
+            <input type="text" name="username" >
+            <br>
+            <label for="firstname">firstname</label>
+            <input type="text" name="firstname" >
+            <br>
+            <label for="lastname">lastname</label>
+            <input type="text" name="lastname" >
+            <br>
+            <label for="email">email</label>
+            <input type="text" name="email" >
+            <br>
+            <label for="phonenumber">phonenumber</label>
+            <input type="text" name="phonenumber" >
+            <br>
+            <label for="password">password</label>
+            <input type="text" name="password" >
+            <br>
+            <label for="confirm_pw">confirm_pw</label>
+            <input type="text" name="confirm_pw" >
+            <br>
+            <button type="submit" value="submit">Submit</button>
+
+        </div>
+    </form>
+    <!-- log in /user-->
+     <h2>Login</h2>
+        <div>
+            <label for="username">username</label>
+            <input type="text" name="username" >
+            <br>
+            <label for="password">password</label>
+            <input type="text" name="password" >
+            <br>
+            <button type="submit" value="login">Log in</button>
+        </div>
+        
+    
+</body>
+</html>

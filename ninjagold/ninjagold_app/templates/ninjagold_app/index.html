@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ninja Gold</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        .gold {
+            margin-bottom: 30px;
+        }
+
+        .locations {
+            display: flex;
+            gap: 15px;
+        }
+
+        .location {
+            border: 2px solid black;
+            padding: 20px;
+            width: 180px;
+            text-align: center;
+        }
+
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        .activities {
+            margin-top: 30px;
+            border: 2px solid black;
+            padding: 15px;
+            height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Ninja Gold</h1>
+
+    <div class="gold">
+        <h2>Your Gold: {{ gold }}</h2>
+    </div>
+
+    <div class="locations">
+
+        <!-- FARM -->
+        <div class="location">
+            <h2>Farm</h2>
+            <p>Earns 10 - 20 gold</p>
+
+            <form action="/goldcounter" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="place" value="farm">
+                <button type="submit">Find Gold!</button>
+            </form>
+        </div>
+
+        <!-- CAVE -->
+        <div class="location">
+            <h2>Cave</h2>
+            <p>Earns 10 - 20 gold</p>
+
+            <form action="/goldcounter" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="place" value="cave">
+                <button type="submit">Find Gold!</button>
+            </form>
+        </div>
+
+        <!-- HOUSE -->
+        <div class="location">
+            <h2>House</h2>
+            <p>Earns 10 - 20 gold</p>
+
+            <form action="/goldcounter" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="place" value="house">
+                <button type="submit">Find Gold!</button>
+            </form>
+        </div>
+
+        <!-- QUEST -->
+        <div class="location">
+            <h2>Quest</h2>
+            <p>Earns/Takes 0 - 50 gold</p>
+
+            <form action="/goldcounter" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="place" value="quest">
+                <button type="submit">Find Gold!</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="activities">
+        <h2>Activities</h2>
+
+        {% for activity in history %}
+            <p>{{ activity.text }}</p>
+        {% empty %}
+            <p>No activities yet.</p>
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>
+

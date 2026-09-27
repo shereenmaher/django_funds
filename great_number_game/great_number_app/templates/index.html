@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Great Number Game</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <h2>Welcome to the Great Number Game</h2>
+
+    <p>I am thinking of a number between 1 and 100</p>
+    <p>Take a guess!</p>
+
+
+    {% if not gameover %}
+
+        <!-- Guess form -->
+        <form action="guess" method="POST">
+            {% csrf_token %}
+
+
+               <!-- Message -->
+            <div class="
+            {% if message == 'Too low!' %}
+                low
+            {% elif message == 'Too high!' %}
+                high
+            {% endif %}
+            ">
+
+            {{ message }}
+
+             </div>
+             <br><br>
+            <input type="number" name="number">
+
+            <br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+    {% endif %}
+
+    {% if gameover %}
+
+        <!-- Play Again form -->
+        <form action="playagain" method="POST">
+            {% csrf_token %}
+            <div class="correct">
+                {{ message }}
+                <button  type="submit">Play again!</button>
+            </div>
+            
+        </form>
+
+    {% endif %}
+
+</body>
+</html>
+
